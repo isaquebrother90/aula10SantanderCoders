@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "name": "beto",
+      "location": "Pragols",
+      "age": "34",
+      "gender": "Masculino",
+      "pwd": "",
+      "pwdrepeat": "",
+      "id": "odL5GA7"
+    }
+  ]
+}

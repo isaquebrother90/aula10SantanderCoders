@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content type" content="text/html">
+    <meta http-equiv="X-UA Compatible" content="IE-Edge, chrome-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BackEnd Simulador</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script type="text/javascript">
+
+        function envio() {
+            
+            var name = document.getElementById('name').value;
+            var location = document.getElementById('location').value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var pwd = document.getElementById('pwd').value;
+            var pwdrepeat = document.getElementById('pwdrepeat').value;
+
+      
+            validarNome();
+            validarLocalizacao();
+            validarIdade();
+            validarGenero();
+            validarSenha();
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:3000/users",
+                data: {
+                    "name": name,
+                    "location": location,
+                    "age": age,
+                    "gender": gender,
+                    "pwd": pwd,
+                    "pwdrepeat": pwdrepeat
+                }
+            })
+        }
+
+   
+
+        function validarNome() {
+                if (document.getElementById('name').value === "") {
+                    alert("O Campo Nome é obrigatório!");
+                    return false;
+               }
+        }
+
+        function validarLocalizacao() {
+                if (document.getElementById('location').value === "") {
+                    alert("O Campo Local é obrigatório!");
+                    return false;
+               }
+        }
+
+        function validarIdade() {
+                if (document.getElementById('age').value === "") {
+                    alert("O Campo idade é obrigatório!");
+                    return false;
+               }
+        }
+
+        function validarGenero() {
+                if (document.getElementById('gender').value === "") {
+                    alert("O Campo gênero é obrigatório!");
+                    return false;
+               }
+        }
+
+        function validarSenha() {
+            var senha = formulario.pwd.value;
+
+            if(pwd == "" || pwd.length <= 7) {
+                alert('Preencha o campo senha com no mínimo 6 caracteres');
+                formulario.pwd.focus();
+                return false;
+            }
+
+            if(pwdrepeat == "" || pwdrepeat.length <= 7) {
+                alert('Preencha o campo repetir senha com no mínimo 6 caracteres');
+                formulario.pwdrepeat.focus();
+                return false;
+            }
+
+            if(pwd != pwdrepeat) {
+                alert('Senhas diferentes');
+                formulario.pwd.focus();
+                return false;
+            }
+
+        }
+
+            var pegarName = document.getElementById('name').value;
+            var pegarLocation = document.getElementById('location').value;
+
+        function recebeNomeECidade(pegarName, pegarLocation) {
+            var nomeTotal = pegarName + " " + pegarLocation
+            console.log(nomeTotal);
+        }
+
+        console.log(recebeNomeCompleto("Isaque", "Moura"));
+        function recebeNomeCompleto(nome, sobrenome) {
+            var nomeTodo = nome + " " + sobrenome
+            console.log(nomeTodo);
+        }
+
+        var nome = 'Isaque';
+        var sobrenome = 'Moura';
+
+
+    </script>
+
+    <style>
+        .container {
+            display: flex;
+            text-align: center;
+        }
+
+        .container,
+        sm-4 {
+            padding: 0px 0px;
+        }
+
+        .formprincipal {
+            width: 700px;
+            border: 10px solid #0073b1;
+            display: flexbox;
+            text-align: center;
+            justify-content: center;
+            vertical-align: middle;
+            margin: 30px auto;
+            justify-content: center;
+            align-content: center;
+            border-radius: 15px;
+
+        }
+
+        .form1 {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 500px;
+            flex-wrap: wrap;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        #name,
+        #location,
+        #age,
+        #gender
+         {
+            margin: 0px 0px;
+            width: 100%;
+          
+        }
+
+
+        #name {
+            margin: 0px 0px 0x;
+            margin-left: 0px;
+        }
+
+        #age {
+            margin: 0px 0px 0x 0px;
+        }
+
+        #gender {
+            margin: auto auto;
+            margin-bottom: 10px;
+            margin-left: 0px;
+        }
+
+        #gender.alllabels {
+            margin: 0px 0px 0px 0px;
+            width: 48px;
+        }
+
+        #botao01 {
+            width: 70px;
+            padding: 1px 2px;
+            margin: 10px 10px;
+            border-radius: 5px;
+            background-color: rgb(192, 228, 192);
+        }
+
+        #botao02 {
+            width: 70px;
+            padding: 1px 2px;
+            margin: 10px 10px;
+            border-radius: 5px;
+            background-color: rgb(192, 228, 192);
+        }
+
+        .titulo {
+            margin: auto auto;
+            text-shadow: rgb(206, 201, 201) 0.1em 0.1em 0.2em;
+        }
+
+        .botoes {
+            justify-content: center;
+            align-content: center;
+        }
+
+        .campos {
+            text-align: left;
+        }
+
+        .alllabels {
+            margin: 0px 0px 0px 0px;
+        }
+
+        #location {
+            margin: 0px 0px 0px 0px;
+        }
+        #location.alllabels {
+            margin: 0px 0px 0px 0px;
+            width: 48px;
+        }
+
+        .labelsenha {
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+
+        .labelrepetirsenha {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container sm-4">
+        <div class="formprincipal">
+            <h1 class="titulo">Simulando backEnd</h1>
+            <form class="form1" name="formulario">
+                <div class="campos">
+                    <label class="alllabels" id="labelnome" for="name">Nome <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="text" value="" id="name" placeholder="Seu nome - Campo obrigatório"><br>
+                    <label class="alllabels" id="labellocation" for="location">Cidade <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="text" value="" id="location" placeholder="Ex: Barueri-SP - Campo obrigatório"><br>
+                    <label class="alllabels" id="labelage" for="age">Idade <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="text" value="" id="age" placeholder="Apenas números - Campo obrigatório"><br>
+                    <label class="alllabels" id="labelgender" for="gender">Gênero <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="text" value="" id="gender" placeholder="Caso não queira mencionar, escreve prefiro não dizer."><br>
+                    <label class="labelsenha" for="pwd">Senha <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Mínimo de 8 caracteres"><br><br>
+                    <label class="labelrepetirsenha" for="pwdrepeat">Repita a senha <em><strong style="color: red;">*</strong></em></label><br>
+                    <input type="password" id="pwdrepeat" name="pwd" minlength="8" placeholder="Mínimo de 8 caracteres"><br><br>
+                </div>
+                <div class="botoes">
+                    <button id="botao01" onclick="envio()">Enviar</button>
+                    <button id="botao02" onclick="buscar()">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+
+</html>
